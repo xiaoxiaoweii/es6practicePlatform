@@ -1,4 +1,7 @@
 "use strict";
 
-var i = 10;
-console.log(i);
+var a = 11 / 4;
+console.log(Number, isFinite(a));
+console.log(Number, isFinite("xixixi"));
+console.log(Number, isFinite(a));
+console.log(Number, isFinite(a));
