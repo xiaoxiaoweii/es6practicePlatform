@@ -150,9 +150,9 @@
 // }
 
 // !数组的索引
-for (let index of arr6.keys()) {
-  console.log(index);
-}
+// for (let index of arr6.keys()) {
+//   console.log(index);
+// }
 
 // !同时输出数组的内容和索引 entries()
 
@@ -167,3 +167,139 @@ for (let index of arr6.keys()) {
 // console.log(list.next().value);
 // console.log(list.next().value);
 // console.log(list.next().value);
+
+// !es6 箭头函数 和扩展
+
+// function add(a, b = 1) {
+//   if ( a == 0) {
+//     throw new Error('a不能为0')
+//   }
+//   return a + b;
+// }
+// console.log(add(1))
+// console.log(add(0))
+
+// !将严谨模式放在函数体内
+// function add(a, b) {
+//   'use strict'
+//   return a + b;
+// }
+// console.log(add(1, 2))
+
+// !获得参数个数 必须传递的参数
+// function add(a, b = 1) {
+//   return a + b;
+// }
+// console.log(add(1, 2))
+// console.log(add.length)
+
+// !箭头函数  不能当构造函数
+// var add = (a,b = 1) => a + b
+// var add = (a,b = 1) => {return a + b}
+// console.log(add(1))
+
+// var add = (a,b = 1) => {
+//   console.log("晓晓伟")
+//   return a + b;
+// }
+// console.log(add(1))
+
+// !对象的函数解构   json
+
+// let json = {
+//   a: 'xiaoxiaoweii',
+//   b: '晓晓伟'
+// }
+
+// function fun({a, b = 'web'}) {
+//   console.log(a,b)
+// }
+// fun(json)
+
+// !数组的解构
+
+// let arr = ['xiaoxiaoweii','晓晓伟','前端'];
+// function fun(a,b,c) {
+//   console.log(a,b,c)
+// }
+
+// fun(...arr);
+
+// !in的用法
+
+// let obj = {
+//   a: 'xiaoxiaowei',
+//   b: '晓晓伟'
+// }
+// console.log('a' in obj)
+// console.log('c' in obj)
+
+// let arr = [1,,,];
+// console.log("arr.length", arr.length)
+// console.log(0 in arr)
+// console.log(1 in arr)
+
+// !数组遍历 foreach
+// let arr = ['xiaoxiaoweii', '晓晓伟', '前端']
+// arr.forEach((val,index) => {
+//   console.log(index, val)
+// })
+
+// !filter
+
+// let arr = ['xiaoxiaoweii', '晓晓伟', '前端']
+// arr.filter(x => console.log(x))
+
+// !map
+
+// let arr = ['xiaoxiaoweii', '晓晓伟', '前端']
+// console.log(arr.map(x => 'web'))
+// console.log(arr.toString())
+// console.log(arr.join('|'));
+
+// !对象赋值
+// let name = 'xiaoxiaoweii';
+// let skill = 'web';
+// let obj = {
+//   name,
+//   skill
+// };
+// console.log(obj);
+
+// !key值的构建
+
+// let key = 'skill';
+// let obj = {
+//   [key] : 'web'
+// };
+// console.log(obj)
+
+// !自定义对象方法
+
+// let obj = {
+//   add: function(a,b) {
+//     return a + b;
+//   }
+// }
+// console.log(obj.add(1,2));
+
+// !is() === 同值相等 is 严格相等
+// let obj1 ={ name: 'xiaoxiaoweii' }
+// let obj2 ={ name: 'xiaoxiaoweii' }
+// console.log(obj1.name === obj2.name)
+// console.log(Object.is(obj1.name,obj2.name))
+
+// console.log(+0 === -0);
+// console.log(NaN === NaN);
+
+// console.log(Object.is(+0,-0));
+// console.log(Object.is(NaN,NaN));
+// !合并对象 assign
+let a = {a: 'xiaoxiaoweii'}
+let b = {b: '晓晓伟'}
+let c = {c: 'web'}
+let d = Object.assign(a,b,c)
+console.log(d)
+
+
+
