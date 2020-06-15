@@ -50,7 +50,6 @@
 // let {foo,bar} = {foo: 'xiaoxiaoweii', bar: '晓晓伟'}
 // console.log(foo + bar)
 
-
 // !解构小坑 先赋值 再解构 需要加圆括号
 // let foo;
 // ({foo} = {foo: '晓晓伟'})
@@ -295,11 +294,150 @@
 // console.log(Object.is(+0,-0));
 // console.log(Object.is(NaN,NaN));
 // !合并对象 assign
-let a = {a: 'xiaoxiaoweii'}
-let b = {b: '晓晓伟'}
-let c = {c: 'web'}
-let d = Object.assign(a,b,c)
-console.log(d)
+// let a = {a: 'xiaoxiaoweii'}
+// let b = {b: '晓晓伟'}
+// let c = {c: 'web'}
+// let d = Object.assign(a,b,c)
+// console.log(d)
 
+// !Symbol 对对象元素的保护作用
 
+// let f = Symbol();
+// console.log(typeof(f))
 
+// let xiaoxiaowei = Symbol('xiaoxiaowei');
+// console.log(xiaoxiaowei)
+// console.log(xiaoxiaowei.toString())
+
+// let xiaoxiaowei = Symbol();
+// let obj = {
+//     [xiaoxiaowei]: '晓晓伟'
+// }
+// console.log(obj[xiaoxiaowei])
+// obj[xiaoxiaowei] = 'web'
+// console.log(obj[xiaoxiaowei])
+
+// let obj = {name: 'xiaoxiaowei',skill: 'web'};
+// let age = Symbol();
+// obj[age] =18;
+// for(let item in obj) {
+//     console.log(obj[item]);
+// }
+// console.log(obj[age])
+
+// !Set
+// let serArr = new Set(['xiaoxiaowei','晓晓伟','web']);
+// serArr.add('hahaha')
+// console.log(serArr)
+
+// !has
+// console.log(serArr);
+// console.log(serArr.has('xiaoxiaowei'))
+// console.log(serArr.has('xioxiaowei'))
+// serArr.delete('xiaoxiaowei')
+// console.log(serArr);
+// serArr.clear()
+// console.log(serArr);
+
+// ! for ... of ...
+// let serArr = new Set(['xiaoxiaowei','晓晓伟','web']);
+// for (let item of serArr) {
+//     console.log(item)
+// }
+// !forEach
+// let serArr = new Set(['xiaoxiaowei','晓晓伟','web']);
+// serArr.forEach(i => {
+//     console.log(i)
+// })
+
+// !size
+// let serArr = new Set(['xiaoxiaowei','晓晓伟','web']);
+// console.log(serArr.size)
+
+// !WeakSet
+
+// let weakObj =new WeakSet();
+// let obj = {
+//     a: 'xiaoxiaowei',
+//     b: '晓晓伟',
+//     c: 'web'
+// }
+// let obj1 = {
+//     a: 'xiaoxiaowei',
+//     b: '晓晓伟',
+//     c: 'web'
+// }
+// weakObj.add(obj)
+// weakObj.add(obj1)
+// console.log(weakObj)
+
+// !map
+// let json = {
+//     name: 'xiaoxiaowei',
+//     skill: 'web'
+// }
+// console.log(json.name)
+
+// !=>
+// var map =new Map();
+// map.set(json, 'iam')
+// console.log(map)
+// map.set('jsjs', json)
+// console.log(map)
+// !增 删 查
+// !get
+// console.log(map.get(json));
+// !has
+// console.log(map.has(json))
+// !delete
+// map.delete(json)
+// console.log(map)
+// map.clear()
+// console.log(map)
+// console.log(map.size)
+
+// !proxy
+
+// let obj = {
+//   add: function (val) {
+//     return val + 1;
+//   },
+//   name: "I am xiaoxiaowei",
+// };
+// // console.log(obj.add(100))
+// // console.log(obj.name)
+// let pro = new Proxy(
+//   {
+//     add: function (val) {
+//       return val + 1;
+//     },
+//     name: "I am xiaoxiaowei",
+//   },
+//   {
+//     //   !get
+//     get: function (target, key, property) {
+//       console.log("come in get");
+//       console.log(target, key, property);
+//       return target[key];
+//     },
+//     set: function (target, key, value, receiver) {
+//       console.log(` setting ${key} = ${value}`)
+//       return target[key] = value
+//     },
+//   }
+// );
+
+// console.log(pro.name);
+// pro.name = 'xiaoxiaoxiaowei'
+// console.log(pro.name);
+// let target = function () {
+//   return "I am xiaoxiaowei";
+// };
+// let handle = {
+//   apply(target, ctx, args) {
+//     console.log("do apply");
+//     return Reflect.apply(...arguments);
+//   },
+// };
+// let pro = new Proxy(target, handle);
+// console.log(pro());
