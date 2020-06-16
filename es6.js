@@ -441,3 +441,124 @@
 // };
 // let pro = new Proxy(target, handle);
 // console.log(pro());
+
+// !promise 1.洗菜 2.做饭 3.吃饭
+// let state = 1;
+// function step1(resolve, reject) {
+//   console.log("1.开始-洗菜做饭");
+//   if ((state = 1)) {
+//     resolve("洗菜做饭-完成");
+//   } else {
+//     reject("洗菜做饭-失败");
+//   }
+// }
+
+// function step2(resolve, reject) {
+//   console.log("2.开始-洗菜做饭");
+//   if ((state = 1)) {
+//     resolve("洗菜做饭-完成");
+//   } else {
+//     reject("洗菜做饭-失败");
+//   }
+// }
+
+// function step3(resolve, reject) {
+//   console.log("3.开始-吃饭");
+//   if ((state = 1)) {
+//     resolve("吃饭-完成");
+//   } else {
+//     reject("吃饭-失败");
+//   }
+// }
+
+// new Promise(step1)
+//   .then(function (val) {
+//     console.log(val);
+//     return new Promise(step2);
+//   })
+//   .then(function (val) {
+//     console.log(val);
+//     return new Promise(step3);
+//   })
+//   .then(function (val) {
+//     console.log(val);
+//   });
+
+// let state = 1;
+// function step1(resolve, reject) {
+//   console.log("1.开始-洗菜做饭");
+//   if ((state == 1)) {
+//     resolve("洗菜做饭-完成");
+//   } else {
+//     reject("洗菜做饭-失败");
+//   }
+// }
+
+// function step2(resolve, reject) {
+//   console.log("2.开始-洗菜做饭");
+//   state = 0;
+//   if ((state == 1)) {
+//     resolve("洗菜做饭-完成");
+//   } else {
+//     reject("洗菜做饭-失败");
+//   }
+// }
+
+// function step3(resolve, reject) {
+//   console.log("3.开始-吃饭");
+//   if ((state == 1)) {
+//     resolve("吃饭-完成");
+//   } else {
+//     reject("吃饭-失败");
+//   }
+// }
+
+// new Promise(step1)
+//   .then(function (val) {
+//     console.log(val);
+//     return new Promise(step2);
+//   })
+//   .then(function (val) {
+//     console.log(val);
+//     return new Promise(step3);
+//   })
+//   .then(function (val) {
+//     console.log(val);
+//   });
+
+// !class
+
+// class Coder {
+//     name(val) {
+//         console.log(val)
+//         return val
+//     }
+//     skill(val) {
+//         console.log(this.name('xiaoxiaowei') + ':' + val)
+//     }
+//     constructor(a,b) {
+//         this.a = a;
+//         this.b = b;
+//     }
+//     add() {
+//         return this.a + this.b
+//     }
+// }
+
+// let xiaoxiaowei = new Coder(1,2);
+// xiaoxiaowei.name('xiaoxiaowei')
+// xiaoxiaowei.skill('xiaoxiaowei')
+// console.log(xiaoxiaowei.add())
+
+// // !class 继承
+// class htmler extends Coder{}
+
+// let pang = new htmler;
+// pang.name('晓晓伟');
+
+// !模块化操作 export 输出
+// !import 输入
+
+import {name} from './temp.js'
+
+console.log(name)
