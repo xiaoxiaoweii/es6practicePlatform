@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Person() {}
+    const person = new Person() // Person构造函数 person是实例对象(对象)
+    console.log(Person.prototype) // 此时Person为函数对象
+    Person.bind({}) // 调用Person函数对象的bind方法
+    Person.call({}) // 调用Person函数对象的call方法
+  </script>
+</body>
+</html>
