@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const p = new Promise((resolve, reject) => { // 执行器函数
+      // 执行异步操作任务
+      setTimeout(() => {
+        const time = Date.now() // 当前时间是偶数 成功 否则失败
+        if (time % 2 == 0) {
+          // 成功 调用resolve(value)
+          resolve('成功的数据, time=' + time)
+        } else {
+          // 失败 调用reject(reason)
+          resolve('失败的数据, time=' + time)
+        }
+      })
+    }, 1000)
+    p.then(
+      value => {
+        console.log('成功的回调',value)
+      }, // 接收得到成功的数据 onResolved
+      reason => {
+        console.log('失败的回调',reason)
+      } // 接收得到失败的value数据 onRejected
+    )
+  </script>
+</body>
+
+</html>
