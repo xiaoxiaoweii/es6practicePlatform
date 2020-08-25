@@ -19,12 +19,14 @@ class Tab {
 		for (var i = 0; i < this.lis.length; i++) {
 			this.lis[i].index = i;
 			this.lis[i].onclick = this.toggleTab;
+			this.remove[i].onclick = this.removeTab;
 		}
 	}
-	/* 获取所有的li和section */
+	/* 动态获取所有的li和section */
 	updateNode() {
 		this.lis = this.main.querySelectorAll('li');
 		this.sections = this.main.querySelectorAll('section');
+		this.remove = this.main.querySelectorAll('.icon-guanbi');
 	}
 	/* 1.切换功能 */
 	toggleTab() {
@@ -51,7 +53,20 @@ class Tab {
 		that.init();
 	}
 	/* 3.删除功能 */
-	removeTab() {}
+	removeTab(e) {
+		e.stopPropagation(); //阻止冒泡 不触发li的切换事件
+		var index = this.parentNode.index;
+		/* 根据索引号删除对应的li和section remove()方法可以删除指定的元素 */
+		that.lis[index].remove();
+		that.sections[index].remove();
+		that.init();
+		/* 当删除的不是选中状态 则选中的li保持不变 */
+		if (document.querySelector('.liactive')) return;
+		/* 当删除选中状态的li 让他的前一个li处于选中状态 */
+		index--;
+		// 如果 that.lis[index] 为真 则执行后边的点击事件
+		that.lis[index] && that.lis[index].click(); // 手动调用点击事件 不需要鼠标触发
+	}
 	/* 4.修改功能 */
 	editTab() {}
 }
