@@ -20,6 +20,8 @@ class Tab {
 			this.lis[i].index = i;
 			this.lis[i].onclick = this.toggleTab;
 			this.remove[i].onclick = this.removeTab;
+			this.spans[i].ondblclick = this.editTab;
+			this.sections[i].ondblclick = this.editTab;
 		}
 	}
 	/* 动态获取所有的li和section */
@@ -27,6 +29,7 @@ class Tab {
 		this.lis = this.main.querySelectorAll('li');
 		this.sections = this.main.querySelectorAll('section');
 		this.remove = this.main.querySelectorAll('.icon-guanbi');
+		this.spans = this.main.querySelectorAll('.fisrstnav li span:first-child');
 	}
 	/* 1.切换功能 */
 	toggleTab() {
@@ -68,7 +71,29 @@ class Tab {
 		that.lis[index] && that.lis[index].click(); // 手动调用点击事件 不需要鼠标触发
 	}
 	/* 4.修改功能 */
-	editTab() {}
+	editTab() {
+		var str = this.innerHTML;
+		/* 双击禁止选中文字 */
+		window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+
+		this.innerHTML = '<input type="text" />';
+		var input = this.children[0];
+		/* 将原有内容填充 */
+		input.value = str;
+		/* 文字处于选中状态 */
+		input.select();
+		/* 当离开文本框 将文本框里面的值给span */
+		input.onblur = function() {
+			this.parentNode.innerHTML = this.value;
+		}
+		/* 按下回车也可以把文本框里的值给span */
+		input.onkeyup = function(e) {
+			if(e.keyCode === 13) {
+				/* 手动调用表单失去焦点事件 不需要鼠标离开操作 */
+				this.blur();
+			}
+		}
+	}
 }
 
 var tab = new Tab('#tab');
