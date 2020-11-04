@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      setTimeout(function () {
+        console.log("1s");
+      }, 1000); // 匿名函数
+
+      setTimeout(function timeOutHandler() {
+        console.log("1s");
+      }, 1000); // 具名函数
+
+      var a = 2(function foo() {
+        var a = 3;
+        console.log(a); // 3
+      })();
+
+      var a = 2(function IIFE(global) {
+        var a = 3;
+        console.log(a); // 3
+        console.log(global.a); //2
+      })(window);
+
+      console.log(a); // 2
+
+      var foo = true;
+      if (foo) {
+        let bar = foo * 2;
+        bar = something(bar);
+        console.log(bar);
+      }
+      console.log(bar);
+
+      var foo = true;
+      if (foo) {
+        var a = 2;
+        const b = 3; // 包含在 if 中的块作用域常量
+        a = 3; // 正常 !
+        b = 4; // 错误 !
+      }
+      console.log(a); // 3
+      console.log(b); // ReferenceError!
+    </script>
+  </body>
+</html>
