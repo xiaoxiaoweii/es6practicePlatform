@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+    foo();
+    function foo() {
+      console.log(a); // undefined
+      var a = 2;
+    } // 只有声明本身会被提升，而赋值或其他运行逻辑会留在原地
+
+    function foo() {
+      var a;
+
+      console.log(a); // undefined
+
+      a = 2
+    }
+
+    foo()
+
+    /* 函数优先 */
+    /* 函数会首先被提升，然后才是变量 */
+
+    foo(); // 3
+
+    var foo;
+
+    function foo() {
+      console.log(1);
+    }
+
+    foo = function() {
+      console.log(2) ;
+    }
+
+    function foo() {
+      console.log(3)
+    }
+    
+
+    
+
+
+  </script>
+</body>
+</html>
